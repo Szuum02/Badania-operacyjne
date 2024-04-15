@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+import csv
 
 def assign_positions(filename):
     # Wczytanie danych
@@ -17,8 +17,18 @@ def assign_positions(filename):
 
     return teams
 
-
 # Użycie funkcji
 filename = 'data/player_stats.csv'
 teams = assign_positions(filename)
-print(teams)
+
+
+output_filename = "data/teams.csv"
+
+teams_with_id = np.hstack((np.arange(1, len(teams)+1).reshape(-1, 1), teams))
+
+with open(output_filename, 'w', newline='') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(['ID', 'Player1', 'Player2', 'Player3', 'Player4', 'Player5'])
+    
+    for team in teams_with_id:
+        writer.writerow(team)
