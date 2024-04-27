@@ -13,7 +13,7 @@ for i in range(n):
     stats[i] = player_stats
 
 fields = ["player_id", "mmr", "pos1", "pos2", "pos3", "pos4", "pos5"]
-filename = "data/player_stats.csv"
+filename = "../data/player_stats.csv"
 
 with open(filename, 'w') as csvfile:
     writer = csv.DictWriter(csvfile, fieldnames=fields)
