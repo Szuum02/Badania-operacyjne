@@ -1,5 +1,7 @@
 import numpy as np
 from target_function import calculate_target_function, make_gamers_matrix
+from crossbreeding import crossbreeding
+
 
 def get_weights(teams, cost_function, a, b):
     teams_cost = np.array([cost_function(team, a, b) for team in teams])
@@ -8,16 +10,19 @@ def get_weights(teams, cost_function, a, b):
 
 
 # k - ilość drużyn do selekcji
-def roulette_wheel(teams, k, cost_function = calculate_target_function, a=1, b=1):
+def roulette_wheel(teams, k, cost_function=calculate_target_function, a=1, b=1):
     weights = get_weights(teams, cost_function, a, b)
     teams_idx = np.arange(len(teams))
-    selected_teams = np.random.choice(teams_idx, size=k, replace=False, p=weights)
+    selected_teams = np.random.choice(
+        teams_idx, size=k, replace=False, p=weights)
     return [teams[idx] for idx in selected_teams]
 
 
-def ranking_selection(teams, k, cost_function = calculate_target_function, a=1, b=1):
-    teams = sorted(teams, key=lambda team: cost_function(team, a, b), reverse=True)
+def ranking_selection(teams, k, cost_function=calculate_target_function, a=1, b=1):
+    teams = sorted(teams, key=lambda team: cost_function(
+        team, a, b), reverse=True)
     return teams[:k]
+
 
 if __name__ == '__main__':
     gamers_matrix = make_gamers_matrix()
@@ -28,6 +33,11 @@ if __name__ == '__main__':
     print("Roulette wheel:")
     print(*roulette_teams, sep="\n")
 
-    ranking_teams = ranking_selection(gamers_matrix, k)
-    print("\nRanking selection:")
-    print(*ranking_teams, sep="\n")
+    # ranking_teams = ranking_selection(gamers_matrix, k)
+    # print("\nRanking selection:")
+    # print(*ranking_teams, sep="\n")
+
+    crossbreeding(roulette_teams[0], roulette_teams[1])
+
+    print("Roulette wheel after crossbreeding:")
+    print(*roulette_teams, sep="\n")

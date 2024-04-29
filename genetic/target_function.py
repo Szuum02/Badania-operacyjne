@@ -4,7 +4,7 @@ import random
 import itertools
 
 
-def make_gamers_matrix(path_stats='../data/player_stats.csv', path_teams='../data/teams.csv'):
+def make_gamers_matrix(path_stats='./data/player_stats.csv', path_teams='./data/teams.csv'):
     player_stats = pd.read_csv(path_stats)
     player_stats.set_index('player_id', inplace=True)
 
@@ -54,7 +54,6 @@ def calculate_teams_cost(gamers_matrix, a=1, b=1):
         res.append(calculate_target_function(gamers_matrix[i], a, b))
 
     return res
-
 
 if __name__ == '__main__':
     gamers_matrix = make_gamers_matrix()
