@@ -4,7 +4,7 @@ import random
 import itertools
 
 
-def make_gamers_matrix(path_stats='./data/player_stats.csv', path_teams='./data/teams.csv'):
+def make_gamers_matrix(path_stats='../data/player_stats.csv', path_teams='../data/teams.csv'):
     player_stats = pd.read_csv(path_stats)
     player_stats.set_index('player_id', inplace=True)
 
@@ -25,11 +25,13 @@ def make_gamers_matrix(path_stats='./data/player_stats.csv', path_teams='./data/
 
     return gamers_matrix
 
-def calculate_target_function(team, a, b):
+
+def calculate_target_function(team, a=1, b=1):
     mmr_team = np.array([player[1] for player in team])
     std_mmr = np.std(mmr_team)
     sum_wants = sum(1 - team[j][j + 2] for j in range(5))
     return a * std_mmr + b * sum_wants
+
 
 def get_best_permutation(team, a=1, b=1):
     mmr_team = np.array([player[1] for player in team])
@@ -46,6 +48,7 @@ def get_best_permutation(team, a=1, b=1):
 
     return best_value, best_permutation
 
+
 def calculate_teams_cost(gamers_matrix, a=1, b=1):
     n_teams = gamers_matrix.shape[0]
     res = []
@@ -54,6 +57,7 @@ def calculate_teams_cost(gamers_matrix, a=1, b=1):
         res.append(calculate_target_function(gamers_matrix[i], a, b))
 
     return res
+
 
 if __name__ == '__main__':
     gamers_matrix = make_gamers_matrix()

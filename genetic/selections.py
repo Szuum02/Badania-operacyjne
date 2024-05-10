@@ -1,6 +1,6 @@
 import numpy as np
 from target_function import calculate_target_function, make_gamers_matrix
-from crossbreeding import crossbreeding
+from crossbreeding import lowest_pref_cross, mask_cross
 
 
 def get_weights(teams, cost_function, a, b):
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     # print("\nRanking selection:")
     # print(*ranking_teams, sep="\n")
 
-    crossbreeding(roulette_teams[0], roulette_teams[1])
+    lowest_pref_cross(roulette_teams[0], roulette_teams[1])
 
     print("Roulette wheel after crossbreeding:")
     print(*roulette_teams, sep="\n")
