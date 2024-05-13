@@ -1,7 +1,9 @@
+
 from genetic.target_function import make_gamers_matrix, calculate_teams_cost
 from genetic.selections import roulette_wheel, ranking_selection
 from genetic.crossbreeding import lowest_pref_cross, mask_cross
 from genetic.mutation import try_permutation, lucky_mutation
+
 
 def make_evolution(teams, k, selection, cross, mutation):
     # take k teams to selection
@@ -24,3 +26,4 @@ if __name__ == "__main__":
     for i in range(n):
         make_evolution(teams, k, selection, cross, mutation)
         print(i, sum(calculate_teams_cost(teams)))
+

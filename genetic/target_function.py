@@ -4,7 +4,7 @@ import random
 import itertools
 
 
-def make_gamers_matrix(path_stats='../data/player_stats.csv', path_teams='../data/teams.csv'):
+def make_gamers_matrix(path_stats='data/player_stats.csv', path_teams='data/teams.csv'):
     player_stats = pd.read_csv(path_stats)
     player_stats.set_index('player_id', inplace=True)
 
@@ -20,7 +20,8 @@ def make_gamers_matrix(path_stats='../data/player_stats.csv', path_teams='../dat
             player_id = row[f'Player{j + 1}']
             player_info = player_stats.loc[player_id]
             mmr = player_info['mmr']
-            wants = player_info[['pos1', 'pos2', 'pos3', 'pos4', 'pos5']].values
+            wants = player_info[['pos1', 'pos2',
+                                 'pos3', 'pos4', 'pos5']].values
             gamers_matrix[i, j] = (player_id, mmr, *wants)
 
     return gamers_matrix
@@ -59,16 +60,16 @@ def calculate_teams_cost(gamers_matrix, a=1, b=1):
     return res
 
 
-if __name__ == '__main__':
-    gamers_matrix = make_gamers_matrix()
-    res = calculate_teams_cost(gamers_matrix)
+# if __name__ == '__main__':
+#     gamers_matrix = make_gamers_matrix()
+#     res = calculate_teams_cost(gamers_matrix)
 
-    # print(gamers_matrix)
-    # print('-------')
+#     # print(gamers_matrix)
+#     # print('-------')
 
-    for i, value in enumerate(res):
-        print(f"Drużyna {i}: Wartość funkcji celu = {value:.2f}")
-        print("Skład drużyny:")
-        for gamer in gamers_matrix[i]:
-            print(f"  ID: {gamer[0]}, MMR: {gamer[1]}, Chęci: {gamer[2:]}")
-        print()
+#     for i, value in enumerate(res):
+#         print(f"Drużyna {i}: Wartość funkcji celu = {value:.2f}")
+#         print("Skład drużyny:")
+#         for gamer in gamers_matrix[i]:
+#             print(f"  ID: {gamer[0]}, MMR: {gamer[1]}, Chęci: {gamer[2:]}")
+#         print()
