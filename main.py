@@ -3,7 +3,7 @@ from genetic.target_function import make_gamers_matrix, calculate_teams_cost
 from genetic.selections import roulette_wheel, ranking_selection
 from genetic.crossbreeding import lowest_pref_cross, mask_cross
 from genetic.mutation import try_permutation, lucky_mutation
-
+import matplotlib.pyplot as plt
 
 def make_evolution(teams, k, selection, cross, mutation):
     # take k teams to selection
@@ -18,12 +18,21 @@ def make_evolution(teams, k, selection, cross, mutation):
 if __name__ == "__main__":
     # input: 20 teams (100 players), 8 teams selected to evolution in each iteration
     teams = make_gamers_matrix(path_stats='data/player_stats.csv', path_teams='data/teams.csv')
-    n = 1000
+    n = 400
     k = 8
     selection = roulette_wheel
     cross = lowest_pref_cross
     mutation = try_permutation
+    teams_cost = []
     for i in range(n):
         make_evolution(teams, k, selection, cross, mutation)
-        print(i, sum(calculate_teams_cost(teams)))
-
+        teams_cost.append(calculate_teams_cost(teams))
+        # print(i, sum(calculate_teams_cost(teams)))
+        
+    plt.semilogy(teams_cost, linestyle='-')
+    plt.title('Koszt zespołów')
+    plt.xlabel('Numer zespołu')
+    plt.ylabel('Koszt')
+    plt.grid(True)
+    plt.show()
+    print(teams)
