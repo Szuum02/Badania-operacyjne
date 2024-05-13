@@ -13,12 +13,12 @@ def make_evolution(teams, k, selection, cross, mutation):
         cross(selected_teams[i], selected_teams[i+1])
 
         # make mutation
-        mutation(teams, selected_teams[i], selected_teams[i+1])
+        # mutation(teams, selected_teams[i], selected_teams[i+1])
 
 if __name__ == "__main__":
     # input: 20 teams (100 players), 8 teams selected to evolution in each iteration
     teams = make_gamers_matrix(path_stats='data/player_stats.csv', path_teams='data/teams.csv')
-    n = 400
+    n = 2000
     k = 8
     selection = roulette_wheel
     cross = lowest_pref_cross
@@ -26,10 +26,10 @@ if __name__ == "__main__":
     teams_cost = []
     for i in range(n):
         make_evolution(teams, k, selection, cross, mutation)
-        teams_cost.append(calculate_teams_cost(teams))
+        teams_cost.append(sum(calculate_teams_cost(teams)))
         # print(i, sum(calculate_teams_cost(teams)))
-        
-    plt.semilogy(teams_cost, linestyle='-')
+
+    plt.plot(teams_cost, linestyle='-')
     plt.title('Koszt zespołów')
     plt.xlabel('Numer zespołu')
     plt.ylabel('Koszt')
