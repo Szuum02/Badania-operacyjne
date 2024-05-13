@@ -49,15 +49,15 @@ def calculate_target_function(gamers_matrix, a=1, b=1):
     return res
 
 
-gamers_matrix = make_gamers_matrix()
-res = calculate_target_function(gamers_matrix)
+# gamers_matrix = make_gamers_matrix()
+# res = calculate_target_function(gamers_matrix)
 
-# print(gamers_matrix)
-# print('-------')
+# # print(gamers_matrix)
+# # print('-------')
 
-for i, (value, permutation) in enumerate(res):
-    print(f"Drużyna {i}: Wartość funkcji celu = {value:.2f}")
-    print("Skład drużyny:")
-    for gamer in permutation:
-        print(f"  ID: {gamer[0]}, MMR: {gamer[1]}, Chęci: {gamer[2:]}")
-    print()
+# for i, (value, permutation) in enumerate(res):
+#     print(f"Drużyna {i}: Wartość funkcji celu = {value:.2f}")
+#     print("Skład drużyny:")
+#     for gamer in permutation:
+#         print(f"  ID: {gamer[0]}, MMR: {gamer[1]}, Chęci: {gamer[2:]}")
+#     print()

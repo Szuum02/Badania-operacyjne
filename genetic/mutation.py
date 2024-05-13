@@ -1,5 +1,5 @@
 import random
-from target_function import calculate_target_function
+from target_fun import calculate_target_function
 
 
 def get_target(team_1, team_2):
