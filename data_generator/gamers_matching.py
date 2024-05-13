@@ -17,7 +17,7 @@ def assign_positions(filename):
 
     return teams
 
-n = 100
+n = 40
 # Użycie funkcji
 filename = '../data/player_stats.csv'
 teams = assign_positions(filename)

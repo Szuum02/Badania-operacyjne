@@ -2,7 +2,7 @@ import numpy as np
 import random
 import csv
 
-n = 100
+n = 40
 stats = [dict() for _ in range(n)]
 for i in range(n):
     position_preferences = np.random.dirichlet(np.ones(5), size=1)
@@ -13,7 +13,7 @@ for i in range(n):
     stats[i] = player_stats
 
 fields = ["player_id", "mmr", "pos1", "pos2", "pos3", "pos4", "pos5"]
-filename = "data/player_stats.csv"
+filename = "../data/player_stats.csv"
 
 with open(filename, 'w') as csvfile:
     writer = csv.DictWriter(csvfile, fieldnames=fields)
