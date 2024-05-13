@@ -2,7 +2,7 @@ import numpy as np
 import random
 import csv
 
-n = 20
+n = 100
 stats = [dict() for _ in range(n)]
 for i in range(n):
     position_preferences = np.random.dirichlet(np.ones(5), size=1)

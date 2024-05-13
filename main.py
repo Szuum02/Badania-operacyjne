@@ -1,14 +1,8 @@
-import sys
 
-sys.path.append("genetic")
-sys.path.append("selections")
-
-
-from target_function import *
-from selections import *
-from crossbreeding import *
-from mutation import *
-
+from genetic.target_function import make_gamers_matrix, calculate_teams_cost
+from genetic.selections import roulette_wheel, ranking_selection
+from genetic.crossbreeding import lowest_pref_cross, mask_cross
+from genetic.mutation import try_permutation, lucky_mutation
 
 
 def make_evolution(teams, k, selection, cross, mutation):
@@ -21,12 +15,15 @@ def make_evolution(teams, k, selection, cross, mutation):
         # make mutation
         mutation(teams, selected_teams[i], selected_teams[i+1])
 
+if __name__ == "__main__":
+    # input: 20 teams (100 players), 8 teams selected to evolution in each iteration
+    teams = make_gamers_matrix(path_stats='data/player_stats.csv', path_teams='data/teams.csv')
+    n = 1000
+    k = 8
+    selection = roulette_wheel
+    cross = lowest_pref_cross
+    mutation = try_permutation
+    for i in range(n):
+        make_evolution(teams, k, selection, cross, mutation)
+        print(i, sum(calculate_teams_cost(teams)))
 
-gamers_matrix = make_gamers_matrix()
-
-for i in range(1000):
-    make_evolution(gamers_matrix,2,ranking_selection,lowest_pref_cross,lucky_mutation)
-
-
-
-# res = calculate_teams_cost(gamers_matrix)

@@ -1,6 +1,8 @@
 import numpy as np
-from target_fun import calculate_target_function, make_gamers_matrix
-from crossbreeding import lowest_pref_cross, mask_cross
+
+from genetic.target_function import calculate_target_function, make_gamers_matrix
+from genetic.crossbreeding import lowest_pref_cross, mask_cross
+
 
 
 def get_weights(teams, cost_function, a, b):
