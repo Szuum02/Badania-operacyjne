@@ -22,8 +22,8 @@ if __name__ == "__main__":
     n = 1000
     k = 4
     selection = ranking_selection
-    cross = lowest_pref_cross
-    mutation = lucky_mutation
+    cross = mask_cross
+    mutation = try_permutation
     teams_cost = []
     best_cost = float("inf")
     res = teams.copy()
