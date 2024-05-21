@@ -24,22 +24,3 @@ def ranking_selection(teams, k, cost_function=calculate_target_function, a=1, b=
     teams = sorted(teams, key=lambda team: cost_function(
         team, a, b), reverse=True)
     return teams[:k]
-
-
-# if __name__ == '__main__':
-#     gamers_matrix = make_gamers_matrix()
-#     k = 2
-#     print("SELECTED TEAMS\n")
-
-#     roulette_teams = roulette_wheel(gamers_matrix, k)
-#     print("Roulette wheel:")
-#     print(*roulette_teams, sep="\n")
-
-#     # ranking_teams = ranking_selection(gamers_matrix, k)
-#     # print("\nRanking selection:")
-#     # print(*ranking_teams, sep="\n")
-
-#     lowest_pref_cross(roulette_teams[0], roulette_teams[1])
-
-#     print("Roulette wheel after crossbreeding:")
-#     print(*roulette_teams, sep="\n")
