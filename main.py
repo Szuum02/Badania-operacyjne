@@ -21,7 +21,6 @@ def make_evolution(teams, k, selection, cross, mutation):
 
 
 if __name__ == "__main__":
-    random.seed(100)
     # input: 8 teams (40 players), 8 teams selected to evolution in each iteration
     teams = make_gamers_matrix(path_stats='data/player_stats.csv', path_teams='data/teams.csv')
     n = 1000
