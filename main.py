@@ -1,3 +1,7 @@
+import random
+
+import numpy as np
+
 from genetic.target_function import make_gamers_matrix, calculate_teams_cost
 from genetic.selections import roulette_wheel, ranking_selection
 from genetic.crossbreeding import lowest_pref_cross, mask_cross
@@ -17,6 +21,7 @@ def make_evolution(teams, k, selection, cross, mutation):
 
 
 if __name__ == "__main__":
+    random.seed(100)
     # input: 8 teams (40 players), 8 teams selected to evolution in each iteration
     teams = make_gamers_matrix(path_stats='data/player_stats.csv', path_teams='data/teams.csv')
     n = 1000

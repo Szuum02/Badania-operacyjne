@@ -32,8 +32,8 @@ def try_permutation(teams, team_1, team_2, n=5):
     make_permutation(team_2, n)
 
 def make_lucky_mutation(teams, team_1):
-    team_2_id = random.randint(0, len(teams) - 1)
     team_1_id = np.where(teams == team_1)[0][0]
+    team_2_id = random.randint(0, len(teams) - 1)
     player_1_id = random.randint(0, 4)
     player_2_id = random.randint(0, 4)
     # zamiana graczy między drużynami
