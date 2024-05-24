@@ -17,13 +17,13 @@ def assign_positions(filename):
 
     return teams
 
-n = 40
+n = 200
 # Użycie funkcji
-filename = '../data/player_stats.csv'
+filename = 'data/player_stats.csv'
 teams = assign_positions(filename)
 
 
-output_filename = "../data/teams.csv"
+output_filename = "data/teams.csv"
 
 teams_with_id = np.hstack((np.arange(1, len(teams)+1).reshape(-1, 1), teams))
 

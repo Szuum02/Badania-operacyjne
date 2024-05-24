@@ -12,24 +12,26 @@ def swap(team, player_1_id, player_2_id):
 
 
 # n - number of permutation
-def make_permutation(team, n):
+def make_permutation(team, n, a, b):
     best_team = team.copy()
-    best_target = calculate_target_function(team)
+    best_target = calculate_target_function(team,a,b)
     for i in range(n):
         player_1_id = random.randint(0, len(team) - 1)
         player_2_id = random.randint(0, len(team) - 1)
 
         swap(team, player_1_id, player_2_id)
-        if calculate_target_function(team) < best_target:
-            best_target = calculate_target_function(team)
+        if calculate_target_function(team,a,b) < best_target:
+            best_target = calculate_target_function(team, a, b)
             best_team = team.copy()
 
     for i in range(len(team)):
         team[i] = best_team[i]
 
-def try_permutation(teams, team_1, team_2, n=5):
-    make_permutation(team_1, n)
-    make_permutation(team_2, n)
+
+def try_permutation(teams, team_1, team_2,a,b, n=5):
+    make_permutation(team_1, n,a,b)
+    make_permutation(team_2, n,a,b)
+
 
 def make_lucky_mutation(teams, team_1):
     team_1_id = np.where(teams == team_1)[0][0]
@@ -40,6 +42,7 @@ def make_lucky_mutation(teams, team_1):
     tmp = teams[team_2_id][player_1_id]
     teams[team_2_id][player_1_id] = teams[team_1_id][player_2_id]
     teams[team_1_id][player_2_id] = tmp
+
 
 def lucky_mutation(teams, team_1, team_2, mutation_chance=1):
     if random.randint(1, 100) <= mutation_chance:

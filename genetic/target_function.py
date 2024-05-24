@@ -27,14 +27,14 @@ def make_gamers_matrix(path_stats='data/player_stats.csv', path_teams='data/team
     return gamers_matrix
 
 
-def calculate_target_function(team, a=1, b=1):
+def calculate_target_function(team, a, b):
     mmr_team = np.array([player[1] for player in team])
     std_mmr = np.std(mmr_team)
     sum_wants = sum(1 - team[j][j + 2] for j in range(5))
     return a * std_mmr + b * sum_wants
 
 
-def get_best_permutation(team, a=1, b=1):
+def get_best_permutation(team, a, b):
     mmr_team = np.array([player[1] for player in team])
     std_mmr = np.std(mmr_team)
 
@@ -50,7 +50,7 @@ def get_best_permutation(team, a=1, b=1):
     return best_value, best_permutation
 
 
-def calculate_teams_cost(gamers_matrix, a=1, b=1):
+def calculate_teams_cost(gamers_matrix, a, b):
     n_teams = gamers_matrix.shape[0]
     res = []
 
