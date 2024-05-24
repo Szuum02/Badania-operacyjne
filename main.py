@@ -58,7 +58,6 @@ def compare_methods(n, k, a, b):
     teams_graphs=[]
     legend_names = [f"Test {i+1}" for i in range(8)]
     for selection, cross, mutation in product(selections, crossbreeding, mutations):
-        print(selection, cross, mutation)
         teams = make_gamers_matrix(
             path_stats='data/player_stats.csv', path_teams='data/teams.csv')
         teams_cost = []
