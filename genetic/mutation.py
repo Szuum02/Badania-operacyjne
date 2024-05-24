@@ -44,7 +44,7 @@ def make_lucky_mutation(teams, team_1):
     teams[team_1_id][player_2_id] = tmp
 
 
-def lucky_mutation(teams, team_1, team_2, mutation_chance=1):
+def lucky_mutation(teams, team_1, team_2, a=0, b=0, mutation_chance=1):
     if random.randint(1, 100) <= mutation_chance:
         make_lucky_mutation(teams, team_1)
 
