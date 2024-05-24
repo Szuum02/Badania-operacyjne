@@ -21,16 +21,16 @@ def make_evolution(teams, k, selection, cross, mutation, a, b):
         mutation(teams, selected_teams[i], selected_teams[i + 1], a, b)
 
 def run_test(n):
-    # k_parameters=[2,5,10,25,50]
-    # for k in k_parameters:
-    #     title=f"k{k}test"
-    #     test_unit(n,k,0.001,1,title)
-    #
-    # title=f"a=0test"
-    # test_unit(n,25,0,1,title)
-    #
-    # title=f"b=0test"
-    # test_unit(n,25,0.001,0,title)
+    k_parameters=[2,5,10,25,50]
+    for k in k_parameters:
+        title=f"k{k}test"
+        test_unit(n,k,0.001,1,title)
+
+    title=f"a=0test"
+    test_unit(n,25,0,1,title)
+
+    title=f"b=0test"
+    test_unit(n,25,0.001,0,title)
 
     compare_methods(n, 25, 0.001, 1)
 
